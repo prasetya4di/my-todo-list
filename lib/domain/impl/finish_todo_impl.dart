@@ -8,7 +8,7 @@ class FinishTodoImpl implements FinishTodo {
   FinishTodoImpl(this._repository);
 
   @override
-  call(Todo todo) {
+  Todo call(Todo todo) {
     todo.finishedDate = DateTime.now();
     _repository.update(todo);
 
