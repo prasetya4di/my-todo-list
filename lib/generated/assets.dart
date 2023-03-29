@@ -5,4 +5,5 @@ class Assets {
   static const String imagesEmptyTodo = 'assets/images/empty_todo.svg';
   static const String imagesIcArrowDownBlue =
       'assets/images/ic_arrow_down_blue.svg';
+  static const String imagesLogo = 'assets/images/logo.png';
 }

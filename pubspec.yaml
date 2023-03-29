@@ -107,3 +107,11 @@ flutter:
   assets:
     - assets/images/
 
+flutter_icons:
+  image_path_android: "./assets/images/logo.png"
+  image_path_ios: "./assets/images/logo.png"
+  android: true
+  ios: true
+  min_sdk_android: 21
+  remove_alpha_ios: true
+
