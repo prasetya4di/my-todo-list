@@ -16,7 +16,15 @@ class TodoItem extends StatelessWidget {
           style: const TextStyle(color: Colors.white),
         ),
       ),
-      title: Text(todo.name),
+      title: Text(
+        todo.name,
+        style: TextStyle(
+          color: todo.finishedDate != null ? Colors.grey : Colors.black,
+          decoration: todo.finishedDate != null
+              ? TextDecoration.lineThrough
+              : TextDecoration.none,
+        ),
+      ),
     );
   }
 }
