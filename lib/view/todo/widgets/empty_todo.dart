@@ -24,10 +24,13 @@ class EmptyTodo extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-            bottom: 80,
-            right: 10,
-            child: SvgPicture.asset(Assets.imagesIcArrowDownBlue, width: 100),)
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+                padding: const EdgeInsets.only(bottom: 40, right: 12),
+                child:
+                    SvgPicture.asset(Assets.imagesIcArrowDownBlue, width: 100)),
+          )
         ],
       ),
     );
