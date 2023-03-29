@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_todo_list/view/todo/widgets/empty_todo.dart';
 
 class TodoScreen extends StatelessWidget {
   const TodoScreen({super.key});
@@ -6,8 +7,17 @@ class TodoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Text("Todo screen"),
+      appBar: AppBar(
+        title: const Text("Todo list"),
+      ),
+      body: const EmptyTodo(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your onPressed function here
+        },
+        backgroundColor: Theme.of(context).primaryColor,
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }

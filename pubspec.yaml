@@ -44,6 +44,7 @@ dependencies:
   path: ^1.8.2
   path_provider: ^2.0.14
   equatable: ^2.0.5
+  flutter_svg: ^2.0.4
 
 dev_dependencies:
   flutter_test:
@@ -102,3 +103,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  assets:
+    - assets/images/
+
