@@ -15,26 +15,22 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   List<Todo> get todos => _todos;
 
   TodoBloc(this._addTodo, this._finishTodo, this._getTodo)
-      : super(const TodoInitialState()) {
-    on<AddTodoEvent>((event, emit) {
-      emit(const TodoState.loading());
-      Todo todo = _addTodo(Todo(event.name, DateTime.now()));
-      _todos.add(todo);
-      emit(const TodoState.added());
-    });
-
-    on<FinishTodoEvent>((event, emit) {
-      emit(const TodoState.loading());
-      Todo todo = _finishTodo(event.todo);
-      _todos[_todos.indexOf(todo)] = todo;
-      emit(const TodoState.finished());
-    });
-
-    on<GetTodoEvent>((event, emit) {
-      emit(const TodoState.loading());
-      List<Todo> todos = _getTodo();
-      _todos = todos;
-      emit(const TodoState.loaded());
+      : super(const TodoState.initial()) {
+    on<TodoEvent>((event, emit) {
+      event.when(onGetTodo: () {
+        emit(const TodoState.loading());
+        _todos = _getTodo();
+        emit(const TodoState.loaded());
+      }, onAddTodo: (name) {
+        emit(const TodoState.loading());
+        Todo todo = _addTodo(Todo(name, DateTime.now()));
+        _todos.add(todo);
+        emit(const TodoState.added());
+      }, onFinishTodo: (todo) {
+        emit(const TodoState.loading());
+        _todos[_todos.indexOf(todo)] = _finishTodo(todo);
+        emit(const TodoState.finished());
+      });
     });
   }
 }

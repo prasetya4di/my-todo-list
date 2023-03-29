@@ -4,7 +4,7 @@ import 'package:my_todo_list/data/model/entity/todo.dart';
 part 'todo_state.freezed.dart';
 
 @freezed
-abstract class TodoEvent with _$TodoEvent {
+class TodoEvent with _$TodoEvent {
   const factory TodoEvent.onGetTodo() = GetTodoEvent;
 
   const factory TodoEvent.onAddTodo(String name) = AddTodoEvent;
@@ -13,7 +13,7 @@ abstract class TodoEvent with _$TodoEvent {
 }
 
 @freezed
-abstract class TodoState with _$TodoState {
+class TodoState with _$TodoState {
   const factory TodoState.initial() = TodoInitialState;
 
   const factory TodoState.loading() = TodoLoadingState;
