@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_todo_list/view/todo/widgets/add_todo_dialog.dart';
 import 'package:my_todo_list/view/todo/widgets/empty_todo.dart';
 
 class TodoScreen extends StatelessWidget {
@@ -10,10 +11,15 @@ class TodoScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Todo list"),
       ),
-      body: const EmptyTodo(),
+      body: const SingleChildScrollView(child: EmptyTodo()),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your onPressed function here
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return const AddTodoDialog();
+            },
+          );
         },
         backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.add),
