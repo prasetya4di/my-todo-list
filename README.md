@@ -1,4 +1,4 @@
-# my_todo_list
+# My Todo List
 
 A simple application to save your todo list, it can add new todo and mark finished todo.
 
