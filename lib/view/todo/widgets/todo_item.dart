@@ -13,7 +13,9 @@ class TodoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        context.read<TodoBloc>().add(TodoEvent.onFinishTodo(todo));
+        if (todo.finishedDate == null) {
+          context.read<TodoBloc>().add(TodoEvent.onFinishTodo(todo));
+        }
       },
       leading: CircleAvatar(
         backgroundColor: Theme.of(context).primaryColor,
