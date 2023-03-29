@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_todo_list/util/constants/routes.dart';
+import 'package:my_todo_list/view/todo/bloc/todo_bloc.dart';
 import 'package:my_todo_list/view/todo/todo_screen.dart';
 
 import 'core/di.dart';
@@ -16,13 +18,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My Todo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return BlocProvider(
+      create: (BuildContext context) => TodoBloc(di.get(), di.get(), di.get()),
+      child: MaterialApp(
+        title: 'My Todo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        routes: {Routes.home: (context) => const TodoScreen()},
+        initialRoute: Routes.home,
       ),
-      routes: {Routes.home: (context) => const TodoScreen()},
-      initialRoute: Routes.home,
     );
   }
 }
