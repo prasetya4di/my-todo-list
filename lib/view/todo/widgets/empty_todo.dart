@@ -9,29 +9,31 @@ class EmptyTodo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(24),
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                SvgPicture.asset(Assets.imagesEmptyTodo, width: 250),
-                const SizedBox(height: 20),
-                Text(
-                    "Looks like you're all caught up! No todos to show. Why not take a break and enjoy some free time? Or, if you're feeling productive, click the plus button to start adding some new todos and manage your tasks like a pro!",
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.titleMedium),
-              ],
+      child: SafeArea(
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  SvgPicture.asset(Assets.imagesEmptyTodo, width: 250),
+                  const SizedBox(height: 20),
+                  Text(
+                      "Looks like you're all caught up! No todos to show. Why not take a break and enjoy some free time? Or, if you're feeling productive, click the plus button to start adding some new todos and manage your tasks like a pro!",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium),
+                ],
+              ),
             ),
-          ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Padding(
-                padding: const EdgeInsets.only(bottom: 40, right: 12),
-                child:
-                    SvgPicture.asset(Assets.imagesIcArrowDownBlue, width: 100)),
-          )
-        ],
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Padding(
+                  padding: const EdgeInsets.only(bottom: 40, right: 12),
+                  child:
+                      SvgPicture.asset(Assets.imagesIcArrowDownBlue, width: 100)),
+            )
+          ],
+        ),
       ),
     );
   }
