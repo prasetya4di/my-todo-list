@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_todo_list/data/model/entity/todo.dart';
+import 'package:my_todo_list/view/todo/bloc/todo_bloc.dart';
+import 'package:my_todo_list/view/todo/bloc/todo_state.dart';
 
 class TodoItem extends StatelessWidget {
   final Todo todo;
@@ -9,6 +12,9 @@ class TodoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () {
+        context.read<TodoBloc>().add(TodoEvent.onFinishTodo(todo));
+      },
       leading: CircleAvatar(
         backgroundColor: Theme.of(context).primaryColor,
         child: Text(
