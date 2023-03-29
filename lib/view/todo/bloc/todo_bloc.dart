@@ -19,28 +19,17 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     on<TodoEvent>((event, emit) {
       event.when(onGetTodo: () {
         emit(const TodoState.loading());
-        Future.value(_getTodo()).then((value) {
-          _todos = value;
-          emit(const TodoState.loaded());
-        }).catchError((error) {
-          emit(TodoState.error(error.toString()));
-        });
+        _todos = _getTodo();
+        emit(const TodoState.loaded());
       }, onAddTodo: (name) {
         emit(const TodoState.loading());
-        Future.value(_addTodo(Todo(name, DateTime.now()))).then((value) {
-          _todos.add(value);
-          emit(const TodoState.added());
-        }).catchError((error) {
-          emit(TodoState.error(error.toString()));
-        });
+        Todo todo = _addTodo(Todo(name, DateTime.now()));
+        _todos.add(todo);
+        emit(const TodoState.added());
       }, onFinishTodo: (todo) {
         emit(const TodoState.loading());
-        Future.value(_finishTodo(todo)).then((value) {
-          _todos[_todos.indexOf(todo)] = value;
-          emit(const TodoState.finished());
-        }).catchError((error) {
-          emit(TodoState.error(error.toString()));
-        });
+        _todos[_todos.indexOf(todo)] = _finishTodo(todo);
+        emit(const TodoState.finished());
       });
     });
   }
