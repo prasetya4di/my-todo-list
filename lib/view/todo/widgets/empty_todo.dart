@@ -9,24 +9,25 @@ class EmptyTodo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(24),
-      child: Column(
+      child: Stack(
+        fit: StackFit.expand,
         children: [
-          SvgPicture.asset(Assets.imagesEmptyTodo, width: 250),
-          const SizedBox(height: 20),
-          Text(
-              "Looks like you're all caught up! No todos to show. Why not take a break and enjoy some free time? Or, if you're feeling productive, click the plus button to start adding some new todos and manage your tasks like a pro!",
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleMedium),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 12.0),
-                child:
-                    SvgPicture.asset(Assets.imagesIcArrowDownBlue, width: 100),
-              ),
-            ],
-          )
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                SvgPicture.asset(Assets.imagesEmptyTodo, width: 250),
+                const SizedBox(height: 20),
+                Text(
+                    "Looks like you're all caught up! No todos to show. Why not take a break and enjoy some free time? Or, if you're feeling productive, click the plus button to start adding some new todos and manage your tasks like a pro!",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.titleMedium),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 80,
+            right: 10,
+            child: SvgPicture.asset(Assets.imagesIcArrowDownBlue, width: 100),)
         ],
       ),
     );

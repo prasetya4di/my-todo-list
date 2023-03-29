@@ -21,7 +21,7 @@ class TodoScreen extends StatelessWidget {
       body: BlocConsumer<TodoBloc, TodoState>(
           builder: (context, state) {
             if (todoBloc.todos.isEmpty) {
-              return const SingleChildScrollView(child: EmptyTodo());
+              return const EmptyTodo();
             } else {
               return ListTodo(todos: todoBloc.todos);
             }
