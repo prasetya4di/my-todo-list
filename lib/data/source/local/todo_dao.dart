@@ -1,7 +1,7 @@
 import 'package:my_todo_list/data/model/entity/todo.dart';
 
 abstract class TodoDao {
-  insert(Todo todo);
+  int insert(Todo todo);
 
   update(Todo todo);
 

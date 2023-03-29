@@ -11,9 +11,7 @@ class TodoDaoImpl implements TodoDao {
   List<Todo> get() => _box.getAll();
 
   @override
-  insert(Todo todo) {
-    _box.put(todo, mode: PutMode.insert);
-  }
+  int insert(Todo todo) => _box.put(todo, mode: PutMode.insert);
 
   @override
   update(Todo todo) {

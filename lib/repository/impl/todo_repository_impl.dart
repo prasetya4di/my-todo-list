@@ -11,9 +11,7 @@ class TodoRepositoryImpl implements TodoRepository {
   List<Todo> get() => _dao.get();
 
   @override
-  insert(Todo todo) {
-    _dao.insert(todo);
-  }
+  int insert(Todo todo) => _dao.insert(todo);
 
   @override
   update(Todo todo) {

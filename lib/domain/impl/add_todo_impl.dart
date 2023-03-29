@@ -8,7 +8,10 @@ class AddTodoImpl implements AddTodo {
   AddTodoImpl(this._repository);
 
   @override
-  call(Todo todo) {
-    _repository.insert(todo);
+  Todo call(Todo todo) {
+    int id = _repository.insert(todo);
+    todo.obxId = id;
+
+    return todo;
   }
 }
