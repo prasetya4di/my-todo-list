@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_todo_list/util/constants/routes.dart';
+import 'package:my_todo_list/view/todo/bloc/todo_bloc.dart';
+import 'package:my_todo_list/view/todo/bloc/todo_state.dart';
 
 class AddTodoDialog extends StatefulWidget {
   const AddTodoDialog({Key? key}) : super(key: key);
@@ -22,14 +26,9 @@ class _AddTodoDialogState extends State<AddTodoDialog> {
         TextButton(
           child: const Text('Add'),
           onPressed: () {
-            // Get the text from the text field using the controller's text property
-            String textFieldValue = _textFieldController.text;
-
-            // Do something with the text field value, such as save it to a database
-            // ...
-
-            // Close the alert dialog
-            Navigator.of(context).pop();
+            String value = _textFieldController.text;
+            context.read<TodoBloc>().add(AddTodoEvent(value));
+            Navigator.popUntil(context, ModalRoute.withName(Routes.home));
           },
         ),
       ],

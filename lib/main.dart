@@ -19,13 +19,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => TodoBloc(di.get(), di.get(), di.get()),
+      create: (_) => TodoBloc(di.get(), di.get(), di.get()),
       child: MaterialApp(
         title: 'My Todo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        routes: {Routes.home: (context) => const TodoScreen()},
+        routes: {Routes.home: (_) => const TodoScreen()},
         initialRoute: Routes.home,
       ),
     );

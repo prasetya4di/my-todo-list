@@ -1,17 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_todo_list/view/todo/bloc/todo_bloc.dart';
+import 'package:my_todo_list/view/todo/bloc/todo_state.dart';
 import 'package:my_todo_list/view/todo/widgets/add_todo_dialog.dart';
 import 'package:my_todo_list/view/todo/widgets/empty_todo.dart';
+import 'package:my_todo_list/view/todo/widgets/list_todo.dart';
 
 class TodoScreen extends StatelessWidget {
   const TodoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var todoBloc = context.read<TodoBloc>();
+    todoBloc.add(const GetTodoEvent());
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Todo list"),
       ),
-      body: const SingleChildScrollView(child: EmptyTodo()),
+      body: BlocConsumer<TodoBloc, TodoState>(
+          builder: (context, state) {
+            if (todoBloc.todos.isEmpty) {
+              return const SingleChildScrollView(child: EmptyTodo());
+            } else {
+              return ListTodo(todos: todoBloc.todos);
+            }
+          },
+          listener: (context, state) {}),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
