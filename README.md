@@ -40,3 +40,7 @@ Run test :
 - [mockito 5.3.2](https://pub.dev/packages/mockito)
 - [bloc_test 9.1.1](https://pub.dev/packages/bloc_test)
 - [random_string 2.3.1](https://pub.dev/packages/random_string)
+
+## Record
+
+https://user-images.githubusercontent.com/84487845/228476470-77b92b81-658e-4890-8a30-a10da28f2063.mp4
