@@ -15,7 +15,7 @@ class ObjectBoxTest {
   /// Create an instance of ObjectBox to use throughout the app.
   static Future<ObjectBoxTest> create() async {
     Store.debugLogs = true;
-    var directory = File("test/data/source/local");
+    var directory = File("test/data/local");
     final store =
         await openStore(directory: join(directory.path, "mytodo-obx-test"));
     return ObjectBoxTest._create(store);
